@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvftml81wnryc"]
+[gd_scene load_steps=3 format=3 uid="uid://m8jlog3dewad"]
 
 [ext_resource type="Texture2D" uid="uid://c75scg6msoo81" path="res://asstes/TrashMock.png" id="1_epo6v"]
-[ext_resource type="Script" path="res://scenes/Trash.gd" id="2_ag7wa"]
+[ext_resource type="Script" path="res://scripts/Trash.gd" id="1_y08q4"]
 
 [node name="Trash" type="Node2D"]
+script = ExtResource("1_y08q4")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_epo6v")
-script = ExtResource("2_ag7wa")

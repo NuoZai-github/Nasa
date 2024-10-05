@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://paxy7vpr3luy"]
 
 [ext_resource type="PackedScene" uid="uid://k7wmk52sti3" path="res://scenes/field.tscn" id="1_ep33n"]
-[ext_resource type="Script" path="res://scenes/Timer.gd" id="1_fbsaa"]
-[ext_resource type="Script" path="res://scenes/game.gd" id="1_ymkxl"]
-[ext_resource type="PackedScene" uid="uid://cvftml81wnryc" path="res://scenes/trash.tscn" id="2_drwpo"]
+[ext_resource type="Script" path="res://scripts/Timer.gd" id="1_fbsaa"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_ymkxl"]
+[ext_resource type="PackedScene" uid="uid://m8jlog3dewad" path="res://scenes/trash.tscn" id="2_drwpo"]
 [ext_resource type="Texture2D" uid="uid://dllxehub3nafd" path="res://asstes/river.png" id="2_s2xqf"]
 
 [sub_resource type="Theme" id="Theme_01qkh"]
@@ -22,7 +22,6 @@ scale = Vector2(1.64, 1.435)
 texture = ExtResource("2_s2xqf")
 
 [node name="Trash" parent="." instance=ExtResource("2_drwpo")]
-position = Vector2(472, 0)
 
 [node name="Field(Top)" parent="." instance=ExtResource("1_ep33n")]
 position = Vector2(0, -250)

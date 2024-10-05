@@ -59,7 +59,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4vbl6")
 text = " Time Left: 60 "
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="MinigameButton" type="Button" parent="."]
 offset_left = -550.0
 offset_top = -120.0
 offset_right = -542.0

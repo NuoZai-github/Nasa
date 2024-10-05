@@ -1,49 +1,51 @@
-[gd_scene load_steps=10 format=3 uid="uid://paxy7vpr3luy"]
+[gd_scene load_steps=17 format=3 uid="uid://paxy7vpr3luy"]
 
 [ext_resource type="PackedScene" uid="uid://k7wmk52sti3" path="res://scenes/field.tscn" id="1_ep33n"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ymkxl"]
 [ext_resource type="PackedScene" uid="uid://m8jlog3dewad" path="res://scenes/trash.tscn" id="2_drwpo"]
 [ext_resource type="Texture2D" uid="uid://dllxehub3nafd" path="res://asstes/river.png" id="2_s2xqf"]
 [ext_resource type="Script" path="res://scripts/trash(bottle).gd" id="4_l0a5a"]
+[ext_resource type="Texture2D" uid="uid://p407vnkhcn22" path="res://asstes/Timer.PNG" id="5_8kyix"]
 [ext_resource type="Script" path="res://scripts/trash(can).gd" id="5_wmvgt"]
 [ext_resource type="Script" path="res://scripts/TimeManager.gd" id="7_keue1"]
+[ext_resource type="PackedScene" uid="uid://slqc46x3do8e" path="res://scenes/plastic.tscn" id="7_l2jkg"]
+[ext_resource type="PackedScene" uid="uid://66igkb0dgkw6" path="res://scenes/can.tscn" id="8_mqqpx"]
+[ext_resource type="Texture2D" uid="uid://bs6bh2d7cfc8p" path="res://asstes/pH Button.PNG" id="8_ykyhw"]
+[ext_resource type="PackedScene" uid="uid://comwx8cdm3ym5" path="res://scenes/waterbottle.tscn" id="9_qgxxf"]
+[ext_resource type="PackedScene" uid="uid://c218eko2if7i4" path="res://scenes/MinigameArea.tscn" id="13_bam78"]
+[ext_resource type="Script" path="res://scripts/MinigameButton.gd" id="13_qrjw0"]
 
 [sub_resource type="Theme" id="Theme_01qkh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vbl6"]
 bg_color = Color(0.152941, 0.12549, 0.227451, 1)
 
-[node name="Game" type="Node2D"]
+[node name="MainScene" type="Node2D"]
 script = ExtResource("1_ymkxl")
 trash_scene = ExtResource("2_drwpo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="Field(Top)" parent="." instance=ExtResource("1_ep33n")]
+position = Vector2(0, -250)
+scale = Vector2(1.3, 1.3)
+
+[node name="Field(Bottom)" parent="." instance=ExtResource("1_ep33n")]
+position = Vector2(0, 250)
+scale = Vector2(1.3, 1.3)
+
 [node name="River" type="Sprite2D" parent="."]
 scale = Vector2(1.64, 1.435)
 texture = ExtResource("2_s2xqf")
 
-[node name="Field(Top)" parent="." instance=ExtResource("1_ep33n")]
-position = Vector2(0, -250)
-scale = Vector2(1.3, 0.3)
-
-[node name="Field(Bottom)" parent="." instance=ExtResource("1_ep33n")]
-position = Vector2(0, 250)
-scale = Vector2(1.3, 0.3)
-
-[node name="Plastic" parent="." instance=ExtResource("2_drwpo")]
-position = Vector2(570, -1)
-
-[node name="bottle" parent="." instance=ExtResource("2_drwpo")]
-position = Vector2(395, 85)
-script = ExtResource("4_l0a5a")
-
-[node name="can" parent="." instance=ExtResource("2_drwpo")]
-position = Vector2(483, -116)
-script = ExtResource("5_wmvgt")
+[node name="Timer" type="Sprite2D" parent="."]
+position = Vector2(472, -259)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("5_8kyix")
 
 [node name="TimerManager" type="Node2D" parent="."]
-position = Vector2(426, -308)
+position = Vector2(453, -246)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("7_keue1")
 
 [node name="Timer" type="Timer" parent="TimerManager"]
@@ -59,11 +61,38 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4vbl6")
 text = " Time Left: 60 "
 horizontal_alignment = 1
 
+[node name="plastic" parent="." instance=ExtResource("7_l2jkg")]
+position = Vector2(542, -102)
+scale = Vector2(2, 2)
+
+[node name="can" parent="." instance=ExtResource("8_mqqpx")]
+position = Vector2(553, -19)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("5_wmvgt")
+speed = 280.0
+
+[node name="bottle" parent="." instance=ExtResource("9_qgxxf")]
+position = Vector2(557, 68)
+scale = Vector2(1.3, 1.3)
+script = ExtResource("4_l0a5a")
+speed = 250.0
+
+[node name="MinigameArea" parent="." instance=ExtResource("13_bam78")]
+z_index = -5
+offset_left = -19.0
+offset_top = -201.0
+offset_right = -19.0
+offset_bottom = -201.0
+
 [node name="MinigameButton" type="Button" parent="."]
-offset_left = -550.0
-offset_top = -120.0
-offset_right = -542.0
-offset_bottom = -112.0
-text = "Beaker"
+offset_left = -586.0
+offset_top = 220.0
+offset_right = 1529.0
+offset_bottom = 2276.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("8_ykyhw")
+flat = true
+script = ExtResource("13_qrjw0")
 
 [connection signal="timeout" from="TimerManager/Timer" to="TimerManager/Timer" method="_on_timeout"]
+[connection signal="pressed" from="MinigameButton" to="." method="_on_show_popup_button_pressed"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://66igkb0dgkw6"]
+
+[ext_resource type="Script" path="res://scripts/Trash.gd" id="1_awfif"]
+[ext_resource type="Texture2D" uid="uid://dhd00x35jcsq5" path="res://asstes/Rubbish_Can-removebg-preview.png" id="2_vqndi"]
+
+[node name="Trash" type="Node2D"]
+script = ExtResource("1_awfif")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_vqndi")

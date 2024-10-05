@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca0e5a00p3sy5"]
+
+[ext_resource type="Texture2D" uid="uid://85m5j6j2ly1s" path="res://asstes/Crystal salt.png" id="1_vnn0d"]
+
+[node name="Salt" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vnn0d")

@@ -1,7 +1,7 @@
 extends Node2D
 
 # Scene movement variables
-@export var speed: float = 200.0
+@export var speed: float = 290.0
 @export var left_limit: float = -500.0
 @export var right_limit: float = 500.0
 @export var min_y: float = -120.0  # Set minimum Y to -120px

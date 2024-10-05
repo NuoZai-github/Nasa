@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://lvprrdo8cfwc"]
+
+[ext_resource type="Texture2D" uid="uid://c4jsjh0i3c8dg" path="res://asstes/pH paper.PNG" id="1_b4wig"]
+
+[node name="Ph paper" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-7, 27)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("1_b4wig")

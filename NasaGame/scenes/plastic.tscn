@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://slqc46x3do8e"]
+
+[ext_resource type="Script" path="res://scripts/Trash.gd" id="1_e6hqd"]
+[ext_resource type="Texture2D" uid="uid://c01osmxcknevm" path="res://asstes/Plastic_bag-removebg-preview.png" id="2_v0sw3"]
+
+[node name="Trash" type="Node2D"]
+script = ExtResource("1_e6hqd")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_v0sw3")

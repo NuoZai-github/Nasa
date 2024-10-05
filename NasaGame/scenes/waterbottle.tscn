@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://comwx8cdm3ym5"]
+
+[ext_resource type="Script" path="res://scripts/Trash.gd" id="1_uugd8"]
+[ext_resource type="Texture2D" uid="uid://cr86ypr4pefgc" path="res://asstes/Water_bottle-removebg-preview.png" id="2_1a17h"]
+
+[node name="Trash" type="Node2D"]
+script = ExtResource("1_uugd8")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_1a17h")

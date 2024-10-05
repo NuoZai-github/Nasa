@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://paxy7vpr3luy"]
+[gd_scene load_steps=2 format=3 uid="uid://paxy7vpr3luy"]
+
+[ext_resource type="Script" path="res://scenes/Timer.gd" id="1_fbsaa"]
 
 [node name="Game" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("1_fbsaa")
+
+[node name="Timer" type="Timer" parent="Node2D"]
+
+[node name="CountdownLabel" type="Label" parent="Node2D"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="timeout" from="Node2D/Timer" to="Node2D/Timer" method="_on_timeout"]

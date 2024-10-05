@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://paxy7vpr3luy"]
 
-[ext_resource type="PackedScene" path="res://scenes/field.tscn" id="1_ep33n"]
+[ext_resource type="PackedScene" uid="uid://k7wmk52sti3" path="res://scenes/field.tscn" id="1_ep33n"]
 [ext_resource type="Script" path="res://scenes/Timer.gd" id="1_fbsaa"]
 [ext_resource type="Texture2D" uid="uid://dllxehub3nafd" path="res://asstes/river.png" id="2_s2xqf"]
 

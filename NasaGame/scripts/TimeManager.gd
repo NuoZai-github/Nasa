@@ -29,7 +29,7 @@ func add_time(seconds: int) -> void:
 
 # Function to update the countdown label text
 func update_label() -> void:
-	countdown_label.text = " Time Left: " + str(time_left) + " "  # Display the remaining time
+	countdown_label.text = "Time Left: " + str(time_left) + " "  # Display the remaining time
 
 # Function to handle end-of-game logic
 func end_game() -> void:

@@ -7,4 +7,4 @@ func _ready():
 	var trash_instance = trash_scene.instantiate()
 	
 	# Add it to the current scene
-	add_child(trash_instance)
+	# add_child(trash_instance)

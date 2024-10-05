@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://d0cpxw3o3kaj6"]
+
+[node name="BeakerButton" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

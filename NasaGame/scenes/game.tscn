@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://paxy7vpr3luy"]
+[gd_scene load_steps=3 format=3 uid="uid://paxy7vpr3luy"]
+
+[ext_resource type="PackedScene" uid="uid://k7wmk52sti3" path="res://scenes/field.tscn" id="1_ep33n"]
+[ext_resource type="Texture2D" uid="uid://dllxehub3nafd" path="res://asstes/river.png" id="2_s2xqf"]
 
 [node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Field" parent="." instance=ExtResource("1_ep33n")]
+position = Vector2(-3, -6)
+scale = Vector2(1.3, 1.3)
+
+[node name="River" type="Sprite2D" parent="."]
+position = Vector2(1, 2)
+scale = Vector2(1.14258, 1)
+texture = ExtResource("2_s2xqf")

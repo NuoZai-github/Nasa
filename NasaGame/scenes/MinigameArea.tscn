@@ -25,12 +25,12 @@ offset_top = -63.0
 offset_right = 651.0
 offset_bottom = 434.0
 
-[node name="Ph paper" parent="Panel" instance=ExtResource("2_i6w55")]
-position = Vector2(942, 413)
+[node name="Beaker" parent="Panel" instance=ExtResource("3_ixwwj")]
+position = Vector2(787, 173)
 
 [node name="Salt" parent="Panel" instance=ExtResource("3_axa5a")]
 position = Vector2(596, 364)
 scale = Vector2(0.2, 0.2)
 
-[node name="Beaker" parent="Panel" instance=ExtResource("3_ixwwj")]
-position = Vector2(787, 173)
+[node name="Ph paper" parent="Panel" instance=ExtResource("2_i6w55")]
+position = Vector2(942, 413)

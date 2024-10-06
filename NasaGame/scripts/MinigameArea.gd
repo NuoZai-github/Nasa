@@ -1,68 +1,51 @@
-extends Control  # Since MinigameArea is a Control node
+extends Control  # MinigameArea is a Control node
 
-# Export PackedScene variables to load the separate scenes
-@export var beaker_scene: PackedScene
-@export var salt_crystal_scene: PackedScene
-@export var ph_paper_scene: PackedScene
+# Update the node paths to reflect the correct names
+@onready var beaker = $Panel/Beaker  # Reference to the Beaker node
+@onready var salt = $Panel/Salt  # Reference to the Salt node
+@onready var ph_paper = $Panel/"Ph paper"  # Reference to the Ph paper node
 
-# References to the instances of the draggable items
-var beaker = null
-var salt_crystal = null
-var ph_paper = null
+var dragged_node = null  # This will hold the node that is being dragged
+var offset = Vector2.ZERO  # To keep track of the offset when dragging
 
-var dragged_node = null  # This will hold the node that is being dragged by the mouse
+# Screen or area size (define the boundaries for dragging)
+var min_x = 0  # Left boundary
+var max_x = 1024  # Right boundary (set according to your window or MinigameArea size)
+var min_y = 0  # Top boundary
+var max_y = 768  # Bottom boundary (set according to your window or MinigameArea size)
 
+# Enable input processing for dragging
 func _ready():
-	set_process_input(true)  # Enable input processing
-	instantiate_minigame_items()  # Instantiate and add the minigame items
+	# Verify if nodes are loaded properly
+	if !beaker or !salt or !ph_paper:
+		print("One or more nodes are missing. Please check the node paths.")
+		return
+	set_process_input(true)
 
-# Function to dynamically load and instantiate the beaker, salt crystal, and pH paper
-func instantiate_minigame_items():
-	# Load and instance the Beaker scene
-	if beaker_scene:
-		beaker = beaker_scene.instantiate()
-		$Panel.add_child(beaker)  # Add the beaker to the Panel node
-		beaker.rect_position = Vector2(100, 100)  # Set position (adjust as needed)
+# Detect when mouse is pressed and released for dragging
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.pressed:
+			# Check if the mouse is pressed on one of the draggable items
+			if beaker.get_global_mouse_position().distance_to(beaker.global_position) < 50:
+				dragged_node = beaker
+				offset = beaker.position - get_local_mouse_position()  # Calculate local offset
+			elif salt.get_global_mouse_position().distance_to(salt.global_position) < 50:
+				dragged_node = salt
+				offset = salt.position - get_local_mouse_position()  # Calculate local offset
+			elif ph_paper.get_global_mouse_position().distance_to(ph_paper.global_position) < 50:
+				dragged_node = ph_paper
+				offset = ph_paper.position - get_local_mouse_position()  # Calculate local offset
 
-	# Load and instance the Salt Crystal scene
-	if salt_crystal_scene:
-		salt_crystal = salt_crystal_scene.instantiate()
-		$Panel.add_child(salt_crystal)  # Add the salt crystal to the Panel node
-		salt_crystal.rect_position = Vector2(200, 100)  # Set position (adjust as needed)
+		elif not event.pressed:
+			dragged_node = null  # Stop dragging when mouse is released
 
-	# Load and instance the Ph Paper scene
-	if ph_paper_scene:
-		ph_paper = ph_paper_scene.instantiate()
-		$Panel.add_child(ph_paper)  # Add the pH paper to the Panel node
-		ph_paper.rect_position = Vector2(300, 100)  # Set position (adjust as needed)
-
-# Function to open the MinigameArea and pause the MainScene
-func open_minigame():
-	get_tree().paused = true  # Pause the MainScene
-	self.visible = true  # Show the MinigameArea
-
-# Function to close the MinigameArea and unpause the MainScene
-func close_minigame():
-	get_tree().paused = false  # Unpause the MainScene
-	self.visible = false  # Hide the MinigameArea
-
-# Handle mouse input for dragging objects
-func _input(event):
-	if event is InputEventMouseButton and event.pressed:
-		# Check if the mouse is pressed on one of the draggable items
-		if beaker and beaker.get_global_rect().has_point(event.position):
-			dragged_node = beaker
-		elif salt_crystal and salt_crystal.get_global_rect().has_point(event.position):
-			dragged_node = salt_crystal
-		elif ph_paper and ph_paper.get_global_rect().has_point(event.position):
-			dragged_node = ph_paper
-
-	# If the mouse button is released, stop dragging
-	if event is InputEventMouseButton and not event.pressed:
-		dragged_node = null
-
-# Update the position of the dragged object (if any)
+# Move the dragged node with the mouse
 func _process(delta):
 	if dragged_node:
-		# Since it's a Control node, use `rect_position` to move the dragged node
-		dragged_node.rect_position = get_global_mouse_position() - dragged_node.rect_size / 2
+		# Update position of the dragged node with the local mouse position and the correct offset
+		dragged_node.position = get_local_mouse_position() + offset  # Apply the correct offset
+
+		# Constrain position within the screen or defined boundaries
+		dragged_node.position.x = clamp(dragged_node.position.x, min_x, max_x)
+		dragged_node.position.y = clamp(dragged_node.position.y, min_y, max_y)

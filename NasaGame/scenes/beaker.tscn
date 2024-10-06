@@ -1,36 +1,46 @@
 [gd_scene load_steps=9 format=3 uid="uid://b7ucwlt7ft5ri"]
 
-[ext_resource type="Script" path="res://Beaker.gd" id="1_i0ofb"]
 [ext_resource type="Texture2D" uid="uid://ckkdfativvcv1" path="res://asstes/Beaker.png" id="2_3aww5"]
 [ext_resource type="Texture2D" uid="uid://0gcq168xgti1" path="res://asstes/Beaker with water.png" id="3_333j3"]
+[ext_resource type="Script" path="res://scripts/Beaker.gd" id="4_b13tb"]
 [ext_resource type="Texture2D" uid="uid://ci1fx7tmwtlhu" path="res://asstes/Beaker with crystal salt.png" id="4_wsi8t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vxqa"]
+atlas = ExtResource("4_wsi8t")
+region = Rect2(0, 0, 423, 396)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mqsp2"]
 atlas = ExtResource("2_3aww5")
 region = Rect2(0, 0, 423, 396)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b1ch7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rsbh"]
 atlas = ExtResource("3_333j3")
-region = Rect2(0, 0, 423, 396)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2olv8"]
-atlas = ExtResource("4_wsi8t")
 region = Rect2(0, 0, 423, 396)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_crayk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mqsp2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b1ch7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2olv8")
+"texture": SubResource("AtlasTexture_0vxqa")
 }],
 "loop": true,
-"name": &"default",
+"name": &"crystal salt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqsp2")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rsbh")
+}],
+"loop": true,
+"name": &"water",
 "speed": 5.0
 }]
 
@@ -38,5 +48,5 @@ animations = [{
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_crayk")
-frame_progress = 0.87917
-script = ExtResource("1_i0ofb")
+animation = &"crystal salt"
+script = ExtResource("4_b13tb")

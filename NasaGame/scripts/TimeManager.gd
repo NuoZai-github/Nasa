@@ -17,9 +17,11 @@ func _ready() -> void:
 
 # Called when the timer times out (every second)
 func _on_Timer_timeout() -> void:
-	time_left -= 1  # Reduce time left by 1 second
-	update_label()  # Update the label with the new time
-	if time_left <= 0:
+	if time_left > 0:
+		time_left -= 1  # Reduce time left by 1 second
+		update_label()  # Update the label with the new time
+		print("Time left: ", time_left)  # Debugging print statement to check time progression
+	else:
 		end_game()  # End the game when time runs out
 
 # Function to handle adding extra time when a successful action occurs
@@ -29,7 +31,7 @@ func add_time(seconds: int) -> void:
 
 # Function to update the countdown label text
 func update_label() -> void:
-	countdown_label.text = "Time Left: " + str(time_left) + " "  # Display the remaining time
+	countdown_label.text = "Time Left: " + str(time_left)  # Display the remaining time
 
 # Function to handle end-of-game logic
 func end_game() -> void:

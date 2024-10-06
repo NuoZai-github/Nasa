@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 # Scene movement variables
 @export var speed: float = 280.0
@@ -14,8 +14,6 @@ extends Node2D
 # Called when the node is ready
 func _ready() -> void:
 	print_tree()
-	# Allow detection of mouse input on this node
-	set_process_input(true)
 
 # Process function for movement (called every frame)
 func _process(delta: float) -> void:
@@ -25,16 +23,10 @@ func _process(delta: float) -> void:
 	if position.x < left_limit:
 		respawn()
 
-# Handle input to detect if the node is pressed (scene interaction)
-func _input(event: InputEvent) -> void:
+# Handle input event on the collision shape
+func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
-		# Get the global mouse position
-		var mouse_pos = get_global_mouse_position()
-		# Create a Rect2 based on the node's position and size
-		var node_rect = Rect2(global_position - size / 2, size)
-		# Check if the mouse is within the node's Rect2
-		if node_rect.has_point(mouse_pos):
-			handle_press()
+		handle_press()
 
 # Function to handle what happens when the scene is pressed
 func handle_press() -> void:

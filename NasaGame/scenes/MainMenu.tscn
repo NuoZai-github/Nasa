@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgrml62fe6q83"]
+[gd_scene load_steps=5 format=3 uid="uid://cgrml62fe6q83"]
 
 [ext_resource type="Script" path="res://scenes/MainMenu.gd" id="1_8sbgs"]
+[ext_resource type="Texture2D" uid="uid://bchbocycijvya" path="res://asstes/Menu page (resize).png" id="2_idlmd"]
+[ext_resource type="AudioStream" uid="uid://bmmnfugwkuwn5" path="res://audio/One Man Symphony - Remnants of a Distant World (Free) - 01 Main Menu Theme.mp3" id="2_lwjqc"]
+[ext_resource type="AudioStream" uid="uid://lcjtl7856046" path="res://audio/mouse-click-153941.mp3" id="3_mkwj4"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +13,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8sbgs")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_idlmd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -35,3 +44,9 @@ layout_mode = 2
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="Background music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_lwjqc")
+
+[node name="ClickSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mkwj4")

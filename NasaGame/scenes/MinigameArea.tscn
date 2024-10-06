@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c218eko2if7i4"]
+[gd_scene load_steps=6 format=3 uid="uid://c218eko2if7i4"]
 
 [ext_resource type="Script" path="res://scripts/MinigameArea.gd" id="1_8b77c"]
 [ext_resource type="PackedScene" uid="uid://lvprrdo8cfwc" path="res://scenes/ph_paper.tscn" id="2_i6w55"]
 [ext_resource type="PackedScene" uid="uid://ca0e5a00p3sy5" path="res://scenes/salt.tscn" id="3_axa5a"]
 [ext_resource type="PackedScene" uid="uid://b7ucwlt7ft5ri" path="res://scenes/beaker.tscn" id="3_ixwwj"]
+[ext_resource type="Script" path="res://scenes/TimeManager.gd" id="5_s1m14"]
 
 [node name="MinigameArea" type="Control"]
 layout_mode = 3
@@ -34,3 +35,15 @@ scale = Vector2(0.2, 0.2)
 
 [node name="Ph paper" parent="Panel" instance=ExtResource("2_i6w55")]
 position = Vector2(942, 413)
+
+[node name="PhResultLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 233.0
+offset_top = -51.0
+offset_right = 273.0
+offset_bottom = -28.0
+
+[node name="TimeManager" type="Node" parent="."]
+script = ExtResource("5_s1m14")
+
+[node name="PopupTimer" type="Timer" parent="."]

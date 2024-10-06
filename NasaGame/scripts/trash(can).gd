@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 
 	# If the node reaches the left limit, reset to the right side
 	if position.x < left_limit:
+		timer_manager.decrease_time(5)
 		respawn()
 
 # Handle input event on the collision shape

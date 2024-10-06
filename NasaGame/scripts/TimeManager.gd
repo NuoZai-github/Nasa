@@ -29,6 +29,12 @@ func add_time(seconds: int) -> void:
 	time_left += seconds  # Add bonus time
 	update_label()  # Update the label with the new time
 
+func decrease_time(amount: int) -> void:
+	time_left -= amount
+	if time_left < 0:
+		time_left = 0
+	print("Time decreased, new time:", time_left)
+
 # Function to update the countdown label text
 func update_label() -> void:
 	countdown_label.text = "Time Left: " + str(time_left)  # Display the remaining time
@@ -38,3 +44,6 @@ func end_game() -> void:
 	timer.stop()  # Stop the timer
 	countdown_label.text = "Game Over!"  # Update the label to show "Game Over"
 	print("Game Over!")
+	# Quit the game after a slight delay to allow the click sound to play
+	await get_tree().create_timer(0.2).timeout
+	get_tree().quit()
